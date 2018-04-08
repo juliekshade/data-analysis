@@ -51,6 +51,18 @@ for i = numgenes
     a = a+1;
 end
 
+% plot acc as a function of t and number of genes
+figure(1)
+plot(t, acc(:,1))
+hold on;
+plot(t, acc(:,2))
+plot(t, acc(:,7))
+plot(t, acc(:,21))
+plot(t, acc(:,29))
+title("Classification Accuracy on Test Set")
+xlabel("t (discriminant threshold)")
+ylabel("Percent Accuracy")
+legend("numGenes = 1", "numGenes = 10", "numGenes = 60", "numGenes = 200", "numGenes = 1000")
 [Mr,Ic] = max(acc);
 [Mall,Ir] = max(Mr);
 
@@ -60,7 +72,7 @@ sensopt = sens(:, Ir);
 specopt = spec(:, Ir);
 
 % plot ROC curve
-figure(1)
+figure(2)
 plot(1-specopt, sensopt)
 hold on;
 xlabel('1-spec(t)')
